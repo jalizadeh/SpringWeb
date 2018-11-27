@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd" 
 	xmlns:context="http://www.springframework.org/schema/context">
 	
-	<bean id="Car" class="com.jalizadeh.springweb.model.Car"></bean>
-	<bean id="CarDAO" class="com.jalizadeh.springweb.dao.CarDAO"></bean>
+	<bean id="car" class="com.jalizadeh.springweb.model.Car"></bean>
+	<bean id="carDAO" class="com.jalizadeh.springweb.dao.CarDAO"></bean>
 	
 </beans>

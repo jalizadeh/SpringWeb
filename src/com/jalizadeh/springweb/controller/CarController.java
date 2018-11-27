@@ -14,7 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.jalizadeh.springweb.dao.CarDAO;
 import com.jalizadeh.springweb.model.Car;
 
-public class CarContoller extends HttpServlet{
+public class CarController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private static String INSERT_OR_EDIT = "/car.jsp";
 	private static String LIST_USER = "/listCar.jsp";
@@ -22,10 +22,10 @@ public class CarContoller extends HttpServlet{
 	ApplicationContext context;
 	
 	
-	public CarContoller() {
+	public CarController() {
 		super();
 		context = new ClassPathXmlApplicationContext("spring.xml");
-		dao = (CarDAO) context.getBean("CarDAO");
+		dao = (CarDAO) context.getBean("carDAO");
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -62,7 +62,7 @@ public class CarContoller extends HttpServlet{
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		context = new ClassPathXmlApplicationContext("spring.xml");
 		Car car = (Car) context.getBean("car");
 		car.setManufacturer(request.getParameter("manufacturer"));;
 		car.setModel(Integer.parseInt(request.getParameter("model")));
@@ -79,6 +79,7 @@ public class CarContoller extends HttpServlet{
 		RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
 		request.setAttribute("cars", dao.getAllCars());
 		view.forward(request, response);
+		
 	}
 	
 }

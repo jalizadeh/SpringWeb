@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<jsp:forward page="/car.jsp"></jsp:forward>
+<jsp:forward page="/listCar.jsp"></jsp:forward>
 
 </body>
 </html>

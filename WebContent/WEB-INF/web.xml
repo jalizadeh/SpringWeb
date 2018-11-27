@@ -13,12 +13,12 @@
 	</welcome-file-list>
 	<servlet>
 		<description></description>
-		<display-name>CarContoller</display-name>
-		<servlet-name>CarContoller</servlet-name>
-		<servlet-class>com.jalizadeh.springweb.controller.CarContoller</servlet-class>
+		<display-name>CarController</display-name>
+		<servlet-name>CarController</servlet-name>
+		<servlet-class>com.jalizadeh.springweb.controller.CarController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>CarContoller</servlet-name>
-		<url-pattern>/CarContoller</url-pattern>
+		<servlet-name>CarController</servlet-name>
+		<url-pattern>/CarController</url-pattern>
 	</servlet-mapping>
 </web-app>

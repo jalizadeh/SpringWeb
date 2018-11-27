@@ -19,10 +19,10 @@
 	Car ID: <input type="text" readonly="readonly" name="carId"
 		 value="<c:out value="${car.carid}"/>" />
 	<br>
-	Manufacturer: <input type="text" readonly="readonly" name="manufacturer"
+	Manufacturer: <input type="text" name="manufacturer"
 		 value="<c:out value="${car.manufacturer}"/>" />
 	<br>
-	Model: <input type="text" readonly="readonly" name="model"
+	Model: <input type="text"  name="model"
 		 value="<c:out value="${car.model}"/>" />
 	<br>
 	<input type="submit" value="submit">
