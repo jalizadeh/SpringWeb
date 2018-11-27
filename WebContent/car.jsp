@@ -15,15 +15,21 @@
 </head>
 <body>
 
+<h1>Add New Car:</h1>
+
 <form method="POST" action="CarController" name="formAddCar">
-	Car ID: <input type="text" readonly="readonly" name="carId"
-		 value="<c:out value="${car.carid}"/>" />
+	<table>
+		<td></td>
+	</table>
+	Car ID: <input type="text" readonly="readonly" name="carId" value="<c:out value="${car.carid}"/>" />
 	<br>
-	Manufacturer: <input type="text" name="manufacturer"
-		 value="<c:out value="${car.manufacturer}"/>" />
+	Manufacturer: <input type="text" name="manufacturer" value="<c:out value="${car.manufacturer}"/>" />
 	<br>
-	Model: <input type="text"  name="model"
-		 value="<c:out value="${car.model}"/>" />
+	Model: <input type="text"  name="model" value="<c:out value="${car.model}"/>" />
+	<br>
+	City: <input type="text"  name="city" value="<c:out value="${car.city}"/>" />
+	<br>
+	Registration Number: <input type="text"  name="model" value="<c:out value="${car.registrationNumber}"/>" />
 	<br>
 	<input type="submit" value="submit">
 </form >

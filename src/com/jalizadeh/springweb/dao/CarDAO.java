@@ -14,6 +14,7 @@ import com.jalizadeh.springweb.util.DbUtil;
 //Car Data Access Object
 public class CarDAO {
 	private Connection connection;
+	private String query;
 	
 	public CarDAO() {
 		this.connection = DbUtil.getConnection();
@@ -21,11 +22,16 @@ public class CarDAO {
 	
 	public void addCar(Car car) {
 		try {
-			PreparedStatement preparedStatement = 
-					connection.prepareStatement("insert into cars(manufacturer,mode) "
-												+ "values (?,?)");
+			query = "insert into"
+					+ " cars(manufacturer,model, city, registrationNumber)"
+					+ " values (?,?,?,?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, car.getManufacturer());
 			preparedStatement.setInt(2, car.getModel());
+			preparedStatement.setString(3, car.getCity());
+			preparedStatement.setInt(4, car.getRegistartionNumber());
+			
+			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -33,10 +39,12 @@ public class CarDAO {
 	
 	public void deleteCar(int carid) {
 		try {
-			PreparedStatement preparedStatement = 
-					connection.prepareStatement("delete from cars "
-												+ " where carid = ?");
+			query = "delete"
+					+ " from cars"
+					+ " where carid = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, carid);
+			
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -46,14 +54,21 @@ public class CarDAO {
 	
 	public void updateCar(Car car) {
 		try {
-			PreparedStatement preparedStatement = 
-					connection.prepareStatement("update Cars set "
-												+ " manufacturer = ?"
-												+ " model = ?"
-												+ " where carid = ?");
+			query = "update Cars set "
+					+ " manufacturer = ?"
+					+ " model = ?"
+					+ " city = ?"
+					+ " registartionNumber = ?"
+					+ " where carid = ?";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, car.getManufacturer());
 			preparedStatement.setInt(2, car.getModel());
-			preparedStatement.setInt(3, car.getCarid());
+			preparedStatement.setString(3, car.getCity());
+			preparedStatement.setInt(4, car.getRegistartionNumber());
+			preparedStatement.setInt(5, car.getCarid());
+			
+			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -71,7 +86,9 @@ public class CarDAO {
 				car.setCarid(rs.getInt("carid"));
 				car.setManufacturer(rs.getString("manufacturer"));
 				car.setModel(rs.getInt("model"));
-						
+				car.setCity(rs.getString("city"));
+				car.setRegistartionNumber(rs.getInt("registartionNumber"));
+				
 				cars.add(car);
 			}
 		} catch (SQLException e) {
@@ -86,10 +103,12 @@ public class CarDAO {
 		Car car = new Car();
 		
 		try {
-			PreparedStatement preparedStatement = 
-					connection.prepareStatement("select * from cars "
-												+ " where carid = ?");
+			query = "select * from cars "
+					+ " where carid = ?";
+			
+			PreparedStatement preparedStatement =connection.prepareStatement(query);
 			preparedStatement.setInt(1, carid);
+			
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			//only if there is the result
@@ -97,6 +116,8 @@ public class CarDAO {
 				car.setCarid(rs.getInt("carid"));
 				car.setManufacturer(rs.getString("manufacturer"));
 				car.setModel(rs.getInt("model"));
+				car.setCity(rs.getString("city"));
+				car.setRegistartionNumber(rs.getInt("registartionNumber"));
 			}
 			
 		} catch (SQLException e) {
